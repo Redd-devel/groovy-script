@@ -1,6 +1,8 @@
 def code
 pipeline {
 	agent any
+	environment {
+		GITHUB_TOKEN = credentials('github-token')
 	stages {
 		stage('stage 1') {
 			steps {
@@ -17,6 +19,8 @@ pipeline {
 				script {
 					code.example2()
 				}
+				git credentialsId: env.GITHUB_TOKEN, url: 'https://github.com/Redd-devel/dbox_sync.git'
+				sh 'ls -l dbox_sync'
 			}
 		}
 	}
