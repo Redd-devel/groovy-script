@@ -20,13 +20,8 @@ pipeline {
 				script {
 					code.example2()
 				}
-				//git credentialsId: env.GITHUB_TOKEN, url: 'https://github.com/Redd-devel/dbox_sync.git'
-				withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                                 sh('git clone https://github.com/Redd-devel/dbox_sync.git')}
-				//sh('git clone https://${GIT_USERNAME}:${GIT_PASSWORD}/dbox_sync.git')
-				//git 'https://github.com/Redd-devel/dbox_sync.git'
-				//git branch: 'master', credentialsId: 'github', url: 'https://github.com/Redd-devel/dbox_sync.git'
-				sh 'ls -l dbox_sync'
+				sh 'cd dbox_sync; chmod +x main.py; ls -l'
 			}
 		}
 	}
