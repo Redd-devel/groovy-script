@@ -2,7 +2,7 @@ def code
 pipeline {
 	agent any
 	environment {
-		GITHUB_TOKEN = credentials('github-token')
+		GITHUB_TOKEN = credentials('github')
 	}
 	stages {
 		stage('stage 1') {
@@ -20,7 +20,10 @@ pipeline {
 				script {
 					code.example2()
 				}
-				git credentialsId: env.GITHUB_TOKEN, url: 'https://github.com/Redd-devel/dbox_sync.git'
+				//git credentialsId: env.GITHUB_TOKEN, url: 'https://github.com/Redd-devel/dbox_sync.git'
+				//withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                                //sh('git clone https://${GIT_USERNAME}:${GIT_PASSWORD}/dbox_sync.git')
+				git 'https://github.com/Redd-devel/dbox_sync.git'
 				sh 'ls -l dbox_sync'
 			}
 		}
