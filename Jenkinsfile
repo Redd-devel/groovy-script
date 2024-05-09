@@ -20,7 +20,7 @@ pipeline {
 				script {
 					code.example2()
 				}
-                                sh('git clone https://github.com/Redd-devel/dbox_sync.git')}
+                                sh('git clone https://github.com/Redd-devel/dbox_sync.git')
 				sh 'cd dbox_sync; chmod +x main.py; ls -l'
 			}
 		}
